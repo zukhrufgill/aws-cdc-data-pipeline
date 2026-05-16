@@ -112,17 +112,17 @@ CREATE EXTERNAL TABLE fintech_warehouse.orders (
 )
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
-LOCATION 's3://your-bucket/public/orders/'
+LOCATION 's3://fintech-cdc-staging-405165523298/public/orders/'
 TBLPROPERTIES ('skip.header.line.count'='1');
 ```
 
 ### Phase 5 — Glue ETL
 ```python
 # Read raw CDC CSVs from S3
-df = spark.read.option("header", "true").csv("s3://your-bucket/public/orders/")
+df = spark.read.option("header", "true").csv("s3://fintech-cdc-staging-405165523298/public/orders/")
 
 # Write clean Parquet
-df.write.mode("overwrite").parquet("s3://your-bucket/clean-orders/")
+df.write.mode("overwrite").parquet("s3://fintech-cdc-staging-405165523298/clean-orders/")
 ```
 
 ---
@@ -181,4 +181,4 @@ ORDER BY created_at DESC;
 
 ## 🔗 Connect
 
-Built by [Your Name] — [LinkedIn](https://linkedin.com/in/yourprofile) | [GitHub](https://github.com/yourusername)
+Built by [Zukhruf Gill] — [LinkedIn](www.linkedin.com/in/zukhruf-gill-3b2ba0280) | [GitHub](https://github.com/zukhrufgill)
